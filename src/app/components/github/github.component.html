@@ -1,0 +1,71 @@
+<div class="container">
+
+    <!-- Search bar -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row">
+                    <form action="" class="col-md-8 col-md-offset-2 form-group">
+                        <input class="form-control" type="text" style="width:100%" placeholder="Insert username and press ENTER..."
+                               [(ngModel)]="username" name="username" (keyup.enter)="search()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Jumbotron container -->
+        <div class="jumbotron">
+            <!-- User name -->
+            <div class="row">
+                <div class="col-md-12 user-header" *ngIf="user">
+                    <a href="{{user.url}}" target="_blank">{{user.name}}</a>
+                </div>
+                <div class="col-md-12 user-header" *ngIf="errorMessage">
+                    The user cannot be found...
+                </div>
+            </div>
+            <!-- Avatar -->
+            <div class="row user-data" *ngIf="user">
+                <div class="col-md-12">
+                    <img src="{{user.avatar_url}}" alt="avatar">
+                </div>
+                <br>
+                <!--  User data -->
+                <div class="col-md-12">
+                    <table>
+                        <tr>
+                            <td><b>Username:</b></td>
+                            <td>{{user.login}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>UserID:</b></td>
+                            <td>{{user.id}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Created:</b></td>
+                            <td>{{user.created_at | date}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Public Repos:</b></td>
+                            <td>{{user.public_repos}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Public Gists:</b></td>
+                            <td>{{user.public_gists}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="jumbotron" *ngIf="repos">
+            <p>{{user.name}}'s repositories:</p>
+            <div *ngFor="let repo of repos">
+                <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
+                <hr style="border-top-color: grey">
+            </div>
+        </div>
+    </div>
+</div>
