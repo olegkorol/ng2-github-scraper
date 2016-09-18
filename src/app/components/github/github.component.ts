@@ -22,6 +22,10 @@ export class GithubComponent implements OnInit {
 
   search() {
     console.log(this.username);
+    this.user = '';
+    this.errorMessage = '';
+    this.repos = '';
+    
     this.fetchGithubService.getUser(this.username)
         .subscribe(
             fetchedUser => this.user = fetchedUser,

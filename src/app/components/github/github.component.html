@@ -33,7 +33,7 @@
                 </div>
                 <br>
                 <!--  User data -->
-                <div class="col-md-12">
+                <div class="col-md-3 col-md-offset-4" style="padding-left: 6%">
                     <table>
                         <tr>
                             <td><b>Username:</b></td>
@@ -64,6 +64,8 @@
             <p>{{user.name}}'s repositories:</p>
             <div *ngFor="let repo of repos">
                 <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>
+                <p style="font-size: 12px; margin-bottom: 0"><b>main language:</b> {{repo.language}}</p>
+                <p style="font-size: 12px"><b>last updated:</b> {{repo.updated_at | date}}</p>
                 <hr style="border-top-color: grey">
             </div>
         </div>
